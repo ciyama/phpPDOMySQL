@@ -1,6 +1,6 @@
 <?php
 	$acao = 'recuperar';
-	require 'tarefa_controller.php';
+	require_once 'tarefa_controller.php';
 
 	// echo '<pre>';
 	// print_r($tarefas);

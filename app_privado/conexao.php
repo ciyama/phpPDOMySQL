@@ -19,7 +19,7 @@ class Conexao {
             return $conexao;
             
         } catch (PDOException $e) {
-            echo  '<p>' .$e->getMessage(). '</p>';
+            echo  '<p> Codigo: ' . $e->getCode() .' Erro: '.$e->getMessage(). '</p>';
         }
 
     }
