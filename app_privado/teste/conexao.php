@@ -8,25 +8,29 @@ $senha = 'Ponks2021';
 
 try {
     $conexao = new PDO($dsn, $usuario, $senha);
+
 /* metodo delete */
-    $query = '
-        DELETE FROM tb_usuarios
-    ';
-
-    $retorno = $conexao->exec($query);
-    echo $retorno;
-
-/* metodo insert */
     // $query = '
-    //     INSERT INTO tb_usuarios(
-    //         nome, email, senha
-    //     ) values (
-    //         "Celio Iyama", "celio@teste.com.br", "123456"
-    //     )
+    //     DELETE FROM tb_usuarios
     // ';
 
     // $retorno = $conexao->exec($query);
     // echo $retorno;
+
+/* metodo insert */
+    $query = '
+        INSERT INTO tb_usuarios(
+            nome, email, senha
+        ) values 
+        ("Celio Iyama", "celio@teste.com.br", "123456"), 
+        ("Dani", "Dani@teste.com.br", "222222"), 
+        ("Maria", "Maria@teste.com.br", "333333"), 
+        ("Carlos", "Carlos@teste.com.br", "44444"),
+        ("Helo", "Helo@teste.com.br", "555555")
+    ';
+
+    $retorno = $conexao->exec($query);
+    echo $retorno;
 
 /* metodo create table */
     // $query = '
