@@ -10,16 +10,27 @@ try {
     $conexao = new PDO($dsn, $usuario, $senha);
 
     $query = '
-        CREATE TABLE IF NOT EXISTS tb_usuarios(
-            id int not null primary key auto_increment,
-            nome varchar(50) not null,
-            email varchar(100) not null,
-            senha varchar(32) not null
+        INSERT INTO tb_usuarios(
+            nome, email, senha
+        ) values (
+            "Celio Iyama", "celio@teste.com.br", "123456"
         )
     ';
-    $retorno = $conexao->exec($query);
 
+    $retorno = $conexao->exec($query);
     echo $retorno;
+
+    // $query = '
+    //     CREATE TABLE IF NOT EXISTS tb_usuarios(
+    //         id int not null primary key auto_increment,
+    //         nome varchar(50) not null,
+    //         email varchar(100) not null,
+    //         senha varchar(32) not null
+    //     )
+    // ';
+    // $retorno = $conexao->exec($query);
+
+    // echo $retorno;
 
 
 
