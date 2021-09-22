@@ -1,6 +1,9 @@
 <?php
 //  php [options] -S addr:port [-t docroot]
 // $con = new PDO("mysql:host=localhost;dbname=exercicio", "root", "senha");
+
+use function PHPSTORM_META\type;
+
 $dsn = 'mysql:host=localhost;dbname=EXEMPLO';
 $usuario = 'webmaster';
 $senha = 'Ponks2021';
@@ -9,46 +12,25 @@ $senha = 'Ponks2021';
 try {
     $conexao = new PDO($dsn, $usuario, $senha);
 
-/* metodo delete */
-    // $query = '
-    //     DELETE FROM tb_usuarios
-    // ';
-
-    // $retorno = $conexao->exec($query);
-    // echo $retorno;
-
-/* metodo insert */
     $query = '
-        INSERT INTO tb_usuarios(
-            nome, email, senha
-        ) values 
-        ("Celio Iyama", "celio@teste.com.br", "123456"), 
-        ("Dani", "Dani@teste.com.br", "222222"), 
-        ("Maria", "Maria@teste.com.br", "333333"), 
-        ("Carlos", "Carlos@teste.com.br", "44444"),
-        ("Helo", "Helo@teste.com.br", "555555")
+        SELECT * FROM tb_usuarios
     ';
 
-    $retorno = $conexao->exec($query);
-    echo $retorno;
+    $stmt = $conexao->query($query);
+    $lista = $stmt->fetchAll(PDO::FETCH_OBJ);
+    print_r(gettype($lista[2]->senha));
+    echo "<br>";
+    $password = intval($lista[2]->senha);
+    echo gettype($password);
+    echo "<br>";
+    echo $password;
 
-/* metodo create table */
-    // $query = '
-    //     CREATE TABLE IF NOT EXISTS tb_usuarios(
-    //         id int not null primary key auto_increment,
-    //         nome varchar(50) not null,
-    //         email varchar(100) not null,
-    //         senha varchar(32) not null
-    //     )
-    // ';
-    // $retorno = $conexao->exec($query);
-
-    // echo $retorno;
-
-
-
-
-} catch (PDOException $exc) {
+    echo "<br><hr><br>";
+    echo '<pre>';
+    print_r($lista);
+    echo '</pre>';
+} 
+catch (PDOException $exc) {
     echo "  Codigo: " . $exc->getCode(). "<br />Mensagem: " . $exc->getMessage();
     // echo '<pre>';
     // print_r($exc);
