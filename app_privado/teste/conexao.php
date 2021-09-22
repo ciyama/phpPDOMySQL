@@ -17,13 +17,13 @@ try {
     ';
 
     $stmt = $conexao->query($query); /* o query no pdo busca uma lista (array) */
-    $usuario = $stmt->fetch(PDO::FETCH_OBJ); /* fetch retorna uma tupla */
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC); /* fetch retorna uma tupla */
    
     echo '<pre>';
     print_r($usuario);
     echo '</pre>';
     echo '<hr>';
-    echo $usuario->nome;
+    echo $usuario['nome'];
 
 
 } 
